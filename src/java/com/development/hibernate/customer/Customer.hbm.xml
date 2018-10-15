@@ -1,0 +1,41 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+    <class name="com.development.hibernate.customer.Customer" table="customer">
+        <id name="customerid" type="java.lang.Integer">
+            <column name="CUSTOMERID" />
+            <generator class="identity" />
+        </id>
+        <property name="customername" type="string">
+            <column name="CUSTOMERNAME" length="50" />
+        </property>
+        <property name="customeraddress" type="string">
+            <column name="CUSTOMERADDRESS" length="150" />
+        </property>
+        <property name="customercity" type="string">
+            <column name="CUSTOMERCITY" length="25" />
+        </property>
+        <property name="customerstate" type="string">
+            <column name="CUSTOMERSTATE" length="25" />
+        </property>
+        <property name="customercountry" type="string">
+            <column name="CUSTOMERCOUNTRY" length="25" />
+        </property>
+        <property name="customermobile" type="string">
+            <column name="CUSTOMERMOBILE" length="10" />
+        </property>
+        <property name="customertelephone" type="string">
+            <column name="CUSTOMERTELEPHONE" length="15" />
+        </property>
+        <property name="customerfax" type="string">
+            <column name="CUSTOMERFAX" length="15" />
+        </property>
+        <set name="emails" cascade="all">
+            <key>
+                <column name="CUSTOMERID" />
+            </key>
+            <one-to-many class="com.development.hibernate.customer.Email" />
+        </set>
+    </class>
+</hibernate-mapping>

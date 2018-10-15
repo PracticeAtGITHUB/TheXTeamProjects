@@ -1,0 +1,20 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+    <class name="com.development.hibernate.city.Country" table="country" catalog="customerdb">
+        <id name="countrycode" type="java.lang.Integer">
+            <column name="COUNTRYCODE" />
+            <generator class="identity" />
+        </id>
+        <property name="countryname" type="string">
+            <column name="COUNTRYNAME" length="50" />
+        </property>
+        <set name="states" inverse="true">
+            <key>
+                <column name="COUNTRYCODE" />
+            </key>
+            <one-to-many class="com.development.hibernate.city.State" />
+        </set>
+    </class>
+</hibernate-mapping>

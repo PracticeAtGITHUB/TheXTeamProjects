@@ -1,0 +1,17 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+    <class name="com.development.hibernate.city.City" table="city" catalog="customerdb">
+        <id name="citycode" type="java.lang.Integer">
+            <column name="CITYCODE" />
+            <generator class="identity" />
+        </id>
+        <many-to-one name="state" class="com.development.hibernate.city.State" fetch="select">
+            <column name="STATECODE" />
+        </many-to-one>
+        <property name="cityname" type="string">
+            <column name="CITYNAME" length="50" />
+        </property>
+    </class>
+</hibernate-mapping>

@@ -1,0 +1,18 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<!-- Generated Mar 10, 2009 10:46:34 AM by Hibernate Tools 3.2.1.GA -->
+<hibernate-mapping>
+    <class name="com.development.hibernate.customer.Email" table="email" catalog="customerdb">
+        <id name="emailid" type="java.lang.Integer">
+            <column name="EMAILID" />
+            <generator class="identity" />
+        </id>
+        <many-to-one name="customer" class="com.development.hibernate.customer.Customer" fetch="select">
+            <column name="CUSTOMERID" />
+        </many-to-one>
+        <property name="email" type="string">
+            <column name="EMAIL" length="75" />
+        </property>
+    </class>
+</hibernate-mapping>

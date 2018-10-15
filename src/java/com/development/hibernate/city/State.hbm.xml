@@ -1,0 +1,23 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+    <class name="com.development.hibernate.city.State" table="state" catalog="customerdb">
+        <id name="statecode" type="java.lang.Integer">
+            <column name="STATECODE" />
+            <generator class="identity" />
+        </id>
+        <many-to-one name="country" class="com.development.hibernate.city.Country" fetch="select">
+            <column name="COUNTRYCODE" />
+        </many-to-one>
+        <property name="statename" type="string">
+            <column name="STATENAME" length="50" />
+        </property>
+        <set name="cities" inverse="true">
+            <key>
+                <column name="STATECODE" />
+            </key>
+            <one-to-many class="com.development.hibernate.city.City" />
+        </set>
+    </class>
+</hibernate-mapping>
